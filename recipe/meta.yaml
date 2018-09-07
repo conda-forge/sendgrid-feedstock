@@ -1,7 +1,7 @@
 {% set name = "sendgrid" %}
-{% set version = "5.4.1" %}
+{% set version = "5.6.0" %}
 {% set file_ext = "tar.gz" %}
-{% set hash_value = "008b7713bef37660d5e3e9fb56ff46fbab79dc08c990eb4fa073efb5c4850a9a" %}
+{% set hash_value = "9e9d3d75602b8853f174ec959d1af1ac168cd361cbcafc81285fa8c183f7a505" %}
 
 package:
   name: '{{ name|lower }}'
