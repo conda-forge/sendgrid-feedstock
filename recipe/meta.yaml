@@ -1,7 +1,7 @@
 {% set name = "sendgrid" %}
-{% set version = "6.0.5" %}
+{% set version = "6.1.2" %}
 {% set file_ext = "tar.gz" %}
-{% set hash_value = "297d33363a70df9b39419210e1273b165d487730e85c495695e0015bc626db71" %}
+{% set hash_value = "8112a3e2edd4cef208ed46335f058d2782397b395b96a472dcfd5e2618cf621b" %}
 
 package:
   name: '{{ name|lower }}'
@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
