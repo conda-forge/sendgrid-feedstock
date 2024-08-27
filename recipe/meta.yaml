@@ -1,6 +1,5 @@
 {% set name = "sendgrid" %}
 {% set version = "6.0.5" %}
-{% set file_ext = "tar.gz" %}
 {% set hash_value = "297d33363a70df9b39419210e1273b165d487730e85c495695e0015bc626db71" %}
 
 package:
@@ -12,22 +11,27 @@ source:
   sha256: '{{ hash_value }}'
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   host:
-    - python
+    - python >=3.4
     - pip
+    - setuptools
   run:
-    - python
+    - python >=3.4
     - python_http_client >=3.0
     - pyyaml
     - six
     - werkzeug
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - sendgrid
     - sendgrid.helpers
@@ -48,3 +52,4 @@ extra:
   recipe-maintainers:
     - RohitK89
     - mariusvniekerk
+    - xylar
