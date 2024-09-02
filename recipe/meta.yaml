@@ -1,6 +1,6 @@
 {% set name = "sendgrid" %}
-{% set version = "6.0.5" %}
-{% set hash_value = "297d33363a70df9b39419210e1273b165d487730e85c495695e0015bc626db71" %}
+{% set version = "6.11.0" %}
+{% set hash_value = "71424b2a97f5a034121ea3b2666c653ba0ed315982f0d57b7851c0c9503dc5ab" %}
 
 package:
   name: '{{ name|lower }}'
@@ -11,21 +11,23 @@ source:
   sha256: '{{ hash_value }}'
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   host:
-    - python >=3.4
+    - python >=3.5
     - pip
     - setuptools
   run:
-    - python >=3.4
-    - python_http_client >=3.0
-    - pyyaml
-    - six
-    - werkzeug
+    - python >=3.5
+    - flask 1.1.2
+    - pyyaml >=4.2b1
+    - python_http_client >=3.2.1
+    - six 1.11.0
+    - starkbank-ecdsa >=2.0.1
+    - more-itertools 5.0.0
 
 test:
   requires:
@@ -42,7 +44,7 @@ about:
   home: https://github.com/sendgrid/sendgrid-python/
   license: MIT
   license_family: MIT
-  license_file: 'LICENSE.txt'
+  license_file: LICENSE
   summary: SendGrid library for Python
   description: "SendGrid Python library. This library allows you to quickly and easily use the SendGrid Web API v3 via Python"
   doc_url: 'https://github.com/sendgrid/sendgrid-python'
