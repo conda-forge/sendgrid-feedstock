@@ -1,27 +1,26 @@
 {% set name = "sendgrid" %}
 {% set version = "6.11.0" %}
-{% set hash_value = "71424b2a97f5a034121ea3b2666c653ba0ed315982f0d57b7851c0c9503dc5ab" %}
 
 package:
   name: '{{ name|lower }}'
   version: '{{ version }}'
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '{{ hash_value }}'
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: '71424b2a97f5a034121ea3b2666c653ba0ed315982f0d57b7851c0c9503dc5ab'
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.5
+    - python >={{ python_min }}
     - flask 1.1.2
     - pyyaml >=4.2b1
     - python_http_client >=3.2.1
@@ -32,6 +31,7 @@ requirements:
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
   imports:
