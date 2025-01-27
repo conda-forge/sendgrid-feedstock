@@ -12,7 +12,7 @@ source:
 build:
   number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -21,12 +21,8 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
-    - flask 1.1.2
-    - pyyaml >=4.2b1
     - python_http_client >=3.2.1
-    - six 1.11.0
     - starkbank-ecdsa >=2.0.1
-    - more-itertools 5.0.0
 
 test:
   requires:
