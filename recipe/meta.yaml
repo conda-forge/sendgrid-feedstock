@@ -21,8 +21,14 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
+    # From requirements.txt
+    - flask 1.1.2
+    - pyyaml >=4.2b1
     - python_http_client >=3.2.1
+    # losening six version requirement because it is otherwise not installable
+    - six >=1.11.0
     - starkbank-ecdsa >=2.0.1
+    - more-itertools 5.0.0
 
 test:
   requires:
