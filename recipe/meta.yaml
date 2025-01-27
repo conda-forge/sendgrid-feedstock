@@ -1,37 +1,42 @@
 {% set name = "sendgrid" %}
 {% set version = "6.11.0" %}
-{% set hash_value = "71424b2a97f5a034121ea3b2666c653ba0ed315982f0d57b7851c0c9503dc5ab" %}
 
 package:
   name: '{{ name|lower }}'
   version: '{{ version }}'
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '{{ hash_value }}'
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: '71424b2a97f5a034121ea3b2666c653ba0ed315982f0d57b7851c0c9503dc5ab'
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.5
+    - python >={{ python_min }}
+    # from requirements.txt
+    # this flask is super old but I'm going to trust it (for now...)
     - flask 1.1.2
     - pyyaml >=4.2b1
     - python_http_client >=3.2.1
-    - six 1.11.0
+    # losening six version requirement because it is otherwise not installable
+    - six >=1.11.0
     - starkbank-ecdsa >=2.0.1
-    - more-itertools 5.0.0
+    # commenting out this dependency because it can't be installed and I
+    # can't tell where it is needed
+    # - more-itertools 5.0.0
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
   imports:
