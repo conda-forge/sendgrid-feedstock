@@ -1,5 +1,5 @@
 {% set name = "sendgrid" %}
-{% set version = "6.12.0" %}
+{% set version = "6.12.2" %}
 
 package:
   name: '{{ name|lower }}'
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '09f647192e6f7fcfc41eba8131b930d61cef6754162e2ca917dc93f4289b18b1'
+  sha256: '969297eaf4a57970fbcdf9de5b663d6c1c50710cceda103b26557b661ab1382a'
 
 build:
   number: 0
@@ -20,6 +20,7 @@ requirements:
     - pip
     - setuptools
   run:
+    - ecdsa >=0.19.1,<1
     - python >={{ python_min }}
     # from requirements.txt
     # this flask is super old but I'm going to trust it (for now...)
@@ -32,7 +33,6 @@ requirements:
     # commenting out this dependency because it can't be installed and I
     # can't tell where it is needed
     # - more-itertools 5.0.0
-    
     # Using the werkzeug constraints for python >=3.9,<3.11 here to stay noarch: python
     # Unfortunately, these are not compatible with the constraints for python >=3.11
     - werkzeug >=2.0.0,<3.0.0
