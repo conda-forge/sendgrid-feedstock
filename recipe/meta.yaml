@@ -20,7 +20,6 @@ requirements:
     - pip
     - setuptools
   run:
-    - ecdsa >=0.19.1,<1
     - python >={{ python_min }}
     # from requirements.txt
     # this flask is super old but I'm going to trust it (for now...)
@@ -29,7 +28,7 @@ requirements:
     - python_http_client >=3.2.1
     # losening six version requirement because it is otherwise not installable
     - six >=1.11.0
-    - starkbank-ecdsa >=2.0.1
+    - ecdsa >=0.19.1,<1
     # commenting out this dependency because it can't be installed and I
     # can't tell where it is needed
     # - more-itertools 5.0.0
