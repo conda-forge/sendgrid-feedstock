@@ -1,5 +1,5 @@
 {% set name = "sendgrid" %}
-{% set version = "6.12.2" %}
+{% set version = "6.12.3" %}
 
 package:
   name: '{{ name|lower }}'
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '969297eaf4a57970fbcdf9de5b663d6c1c50710cceda103b26557b661ab1382a'
+  sha256: 'd0cb7bf92cb5cc9fc4466074d6a40fd474332bbb52914a93620f566f26060ac7'
 
 build:
   number: 0
