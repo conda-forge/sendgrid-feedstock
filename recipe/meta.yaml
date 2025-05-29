@@ -32,9 +32,8 @@ requirements:
     # commenting out this dependency because it can't be installed and I
     # can't tell where it is needed
     # - more-itertools 5.0.0
-    # Using the werkzeug constraints for python >=3.9,<3.11 here to stay noarch: python
-    # Unfortunately, these are not compatible with the constraints for python >=3.11
-    - werkzeug >=2.0.0,<3.0.0
+    # Using the most restrictive constraints for python >=3.12 here to stay noarch: python
+    - werkzeug >=2.3.5
 
 test:
   requires:
