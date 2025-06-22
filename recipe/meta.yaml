@@ -22,6 +22,8 @@ requirements:
   run:
     - python >={{ python_min }}
     # Note: do not use requirements.txt, which seems to be for development only
+    # However, tests fail without this:
+    - pyyaml >=4.2b1
     - python_http_client >=3.2.1
     - ecdsa >=0.19.1,<1
     # Using the most restrictive constraints for python >=3.12 here to stay noarch: python
