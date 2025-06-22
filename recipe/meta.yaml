@@ -10,7 +10,7 @@ source:
   sha256: '9e88b849daf0fa4bdf256c3b5da9f5a3272402c0c2fd6b1928c9de440db0a03d'
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
@@ -21,17 +21,9 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
-    # from requirements.txt
-    # this flask is super old but I'm going to trust it (for now...)
-    - flask 1.1.2
-    - pyyaml >=4.2b1
+    # Note: do not use requirements.txt, which seems to be for development only
     - python_http_client >=3.2.1
-    # losening six version requirement because it is otherwise not installable
-    - six >=1.11.0
     - ecdsa >=0.19.1,<1
-    # commenting out this dependency because it can't be installed and I
-    # can't tell where it is needed
-    # - more-itertools 5.0.0
     # Using the most restrictive constraints for python >=3.12 here to stay noarch: python
     - werkzeug >=2.3.5
 
