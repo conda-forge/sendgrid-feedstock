@@ -1,5 +1,5 @@
 {% set name = "sendgrid" %}
-{% set version = "6.12.4" %}
+{% set version = "6.12.5" %}
 
 package:
   name: '{{ name|lower }}'
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '9e88b849daf0fa4bdf256c3b5da9f5a3272402c0c2fd6b1928c9de440db0a03d'
+  sha256: 'ea9aae30cd55c332e266bccd11185159482edfc07c149b6cd15cf08869fabdb7'
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
@@ -20,6 +20,7 @@ requirements:
     - pip
     - setuptools
   run:
+    - cryptography >=45.0.6
     - python >={{ python_min }}
     # Note: do not use requirements.txt, which seems to be for development only
     # However, tests fail without this:
