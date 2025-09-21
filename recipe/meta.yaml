@@ -20,8 +20,8 @@ requirements:
     - pip
     - setuptools
   run:
-    - cryptography >=45.0.6
     - python >={{ python_min }}
+    - cryptography >=45.0.6
     # Note: do not use requirements.txt, which seems to be for development only
     # However, tests fail without this:
     - pyyaml >=4.2b1
