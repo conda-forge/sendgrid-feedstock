@@ -21,13 +21,22 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
+    # Note: the upstream requirements are a mess.  Some are in setup.py and some
+    #       in requirements.txt, but the latter has exact version pins that are
+    #       problematic for conda-forge and seem unnecessary.  They have other
+    #       bounds that are inaccurately loose.  Details below.
+    # consistent between setup.py and requirements.txt
     - cryptography >=45.0.6
-    # Note: do not use requirements.txt, which seems to be for development only
-    # However, tests fail without this:
-    - pyyaml >=4.2b1
+    # need more recent version than in requirements.txt to support FullLoader
+    - pyyaml >=5.1
+    # consistent between setup.py and requirements.txt    
     - python_http_client >=3.2.1
+    # missing from setup.py not usisng exact pin from requirements.txt but lowerbound is to support iteritems
+    - six >=1.10
     # Using the most restrictive constraints for python >=3.12 here to stay noarch: python
     - werkzeug >=2.3.5
+    # Note: flask is not needed as a runtime requirement and is only used for testing (but
+    #       not on conda-forge)
 
 test:
   requires:
